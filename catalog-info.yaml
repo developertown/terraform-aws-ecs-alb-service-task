@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: terraform-aws-ecs-cluster
+  description: AWS ECS Cluster terraform module
+  annotations:
+    github.com/project-slug: developertown/terraform-aws-ecs-cluster
+  tags:
+    - terraform
+    - aws
+    - ecs
+    - container
+spec:
+  type: terraform-module
+  lifecycle: production
+  owner: dt-devops

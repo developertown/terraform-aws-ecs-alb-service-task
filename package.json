@@ -1,0 +1,34 @@
+{
+  "name": "terraform-aws-ecs-cluster",
+  "version": "1.0.0",
+  "description": "Terraform module to provision an [`ECS Cluster`](https://aws.amazon.com/en/ecs/).",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@semantic-release/github": "^9.0.2",
+    "git-cz": "^4.9.0",
+    "semantic-release": "^21.0.3"
+  },
+  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/github"
+  ],
+  "release": {
+    "branches": ["main"]
+  }
+}
