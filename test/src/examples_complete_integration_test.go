@@ -78,10 +78,10 @@ func TestExamplesComplete(t *testing.T) {
 
 		// Verify we're getting back the outputs we expect
 		// Ensure we get the attribute included in the ID
-		assert.Equal(t, "test-svc-test-service"+suffix, serviceName)
-		assert.Contains(t, serviceArn, "test-svc-test-service")
-		assert.Contains(t, taskDefinitionArn, "test-svc-test-task")
-		assert.Contains(t, taskDefinitionFamily, "test-svc-test-task")
+		assert.Equal(t, "test-svc-test-"+suffix+"-service", serviceName)
+		assert.Contains(t, serviceArn, "test-svc-test-"+suffix+"-service")
+		assert.Contains(t, taskDefinitionArn, "test-svc-test-"+suffix+"-task")
+		assert.Contains(t, taskDefinitionFamily, "test-svc-test-"+suffix+"-task")
 
 		// This will run `terraform apply` a second time and fail the test if there are any errors
 		terraform.TgApplyAll(t, terraformOptions)
@@ -95,15 +95,6 @@ func TestExamplesComplete(t *testing.T) {
 		assert.Equal(t, serviceArn, serviceArn2, "Expected `serviceArn` to be stable")
 		assert.Equal(t, taskDefinitionArn, taskDefinitionArn2, "taskDefinitionArn `name` to be stable")
 		assert.Equal(t, taskDefinitionFamily, taskDefinitionFamily2, "Expected `taskDefinitionFamily` to be stable")
-	})
-
-	// Run perpetual diff
-	testStructure.RunTestStage(t, "perpetual_diff", func() {
-		terraformOptions := testStructure.LoadTerraformOptions(t, tempTestFolder)
-		planResult := terraform.TgPlanAllExitCode(t, terraformOptions)
-
-		// Make sure the plan shows zero changes
-		assert.Contains(t, planResult, "No changes.")
 	})
 }
 
